@@ -1,0 +1,63 @@
+<?php
+$conn=mysqli_connect("localhost","root","","hospital_management");
+if($conn)
+{
+    echo "database connected successfully";
+}
+else 
+    echo "database not connected successfully";
+    if($_SERVER['REQUEST_METHOD']=='POST')
+{
+$first name=$_POST["first name"]
+$last name=$_POST["last name"];
+$staff id=$_POST["staff id"];
+$designation=$_POST["designation"];
+$sql="INSERT INTO 'staff details'('first name','last name','staff id','designation')VALUES
+('$first name','$last name',$staff id','$designation')";
+$result=mysqli_query($conn,$sql);
+if($result){
+echo "The record has been inserted successfully <br>";
+$insert=true;
+}else
+{
+echo "The record has not been inserted!"; .mysqli_error($conn);
+}
+}
+
+?>
+<!DOCTYPE html>
+<head><title>STAFF DETAILS</title>
+<style>
+h1{
+text-align:center;
+}
+div{
+text-align:center;
+padding: 40px 40px 40px 40px;
+}
+body{
+background-image:url("staff.jpg");
+background-size:1500px 1000px;
+font-size:150%;
+}
+</style>
+</head>
+<html>
+<body>
+<h1 align='center'>STAFF DETAILS</h1><br>
+<div>
+<form>
+ <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br><br>
+ <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname"><br><br><br>
+ <label for="sid">Staff id:</label>
+  <input type="text" id="sid" name="sid"><br><br><br> 
+ <label for="des">Designation:</label>
+  <input type="text" id="des" name="des"><br><br><br> 
+<input type="submit" value="Submit">
+<input type="reset" value="Reset"><br>
+</div>
+</form>
+</body>
+</html>

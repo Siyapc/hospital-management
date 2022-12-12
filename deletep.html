@@ -1,0 +1,33 @@
+<?php
+$conn=mysqli_connect("localhost","root","","hospital_management");
+if(!$conn)
+{
+    echo  "database not connected successfully". mysqli_error($conn);
+}
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $sid = $_POST['sid'];
+    $sql = "DELETE FROM `staff` WHERE `staff`.`staff_id` = '$sid'";
+    $result = mysqli_query($conn,$sql);
+    if($result){
+        echo "The record was deleted!";
+    }else{
+        echo "The record was not deleted!". mysqli_error($conn);
+    }
+
+  }
+
+?><!DOCTYPE html>
+<head>
+<style>
+
+body{
+background-image:url("hospital.jpg");
+background-size:1500px 1000px;
+}
+
+</style>
+</head>
+<html>
+<body>
+
+</body>

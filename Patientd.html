@@ -1,0 +1,75 @@
+<?php
+$conn=mysqli_connect("localhost","root","","test");
+if($conn==false){
+die("ERROR:Could not connect.".mysqli_connect_error());
+}
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+$firstname=$_POST["firstname"];
+$lastname=$_POST["lastname"];
+$patientid=$_POST["patientid"];
+$gender=$_POST["gender"];
+$admissiondate=$_POST["admissiondate"];
+$admissionid=$_POST["admissionid"];
+$sql="INSERT INTO 'patient_details' ('firstname','lastname','patientid','gender','admissiondate','admissionid') VALUES ('$firstname','$lastname','$patientid','$gender','$admissiondate','$admissionid')";
+$result=mysqli_query($conn,$sql);
+if($result)
+{
+$insert=true;
+}else{
+echo "The record was not inserted!".mysql_error($conn);
+}<!DOCTYPE html>
+<head><title>Patient details</title>
+<style>
+div{
+text-align:center;
+padding:20px 100px 100px 100px;
+margin:20px 350px 400px 350px;
+font-size: 28px;
+background-color:#add8e6;
+}
+body{
+background-image:url("hospital.jpg");
+background-size:1500px 1000px;
+}
+h1
+{
+margin:50px 20px 50px 20px;
+padding:50px 100px 10px 100px;
+font-size: 38px;
+background-color:#add8e6;
+}
+</style>
+</head>
+<html>
+<body>
+<h1 align='center'> PATIENT DETAILS</h1><br>
+<div>
+<form>
+<b>
+  <label for="fname">First name: </label> 
+  <input type="text" id="fname" name="fname"><br><br>
+
+  <label for="lname">Last name: </label>
+  <input type="text" id="lname" name="lname"><br><br>
+
+ <label for="lname">Patient Id : </label>
+  <input type="text" id="pid" name="pid"><br><br>
+
+Gender: M<input type="radio" id="gen" name="gen" value="Male">
+        F<input type="radio" id="gen" name="gen" value="Female">
+        O<input type="radio" id="gen" name="gen" value="Others">
+<br><br>
+<label for="addate">Admission Date: </label>
+  <input type="text" id="lname" name="lname"><br><br>
+
+<label for="lname">Admission Id: </label>
+  <input type="text" id="lname" name="lname"><br><br> 
+
+<input type="submit" value="Submit">
+<input type="reset" value="Reset">
+</b>
+</form>
+</div>
+</body>
+</html>
